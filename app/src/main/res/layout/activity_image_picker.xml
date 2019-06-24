@@ -1,9 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.design.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".ImagePickerActivity">
+    tools:context=".MainActivity">
 
-</android.support.constraint.ConstraintLayout>
+
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".MainActivity"
+        tools:showIn="@layout/activity_main"
+        android:orientation="horizontal"
+        android:weightSum="2"
+
+        android:background="@drawable/background_2">
+
+        <Button
+            android:id="@+id/started"
+            android:layout_width="800px"
+            android:layout_height="136px"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="54dp"
+            android:layout_marginEnd="53dp"
+            android:layout_marginBottom="132dp"
+            android:layout_weight="1"
+            android:background="@drawable/shape"
+            android:textSize="25sp"
+            android:text="Get Started" />
+
+
+    </RelativeLayout>
+
+
+</android.support.design.widget.CoordinatorLayout>

@@ -28,15 +28,14 @@
 
         </com.gsrathoreniks.facefilter.camera.CameraSourcePreview>
 
-        <Button
-            android:id="@+id/save"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#00000000"
-            android:onClick="BtnClick"
-            android:scaleType="fitXY"
-            android:text="Save"
-            android:tint="#ffffff" />
+        <!--<Button-->
+            <!--android:id="@+id/save"-->
+            <!--android:layout_width="wrap_content"-->
+            <!--android:layout_height="wrap_content"-->
+            <!--android:background="#00000000"-->
+            <!--android:scaleType="fitXY"-->
+            <!--android:text="Save"-->
+            <!--android:tint="#ffffff" />-->
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -83,7 +82,20 @@
                     android:scaleType="fitXY"
                     app:srcCompat="@drawable/btn_camera_all" />
 
-
+                <ImageView
+                    android:id="@+id/imgSave"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_alignParentRight="true"
+                    android:layout_marginRight="100dp"
+                    android:layout_weight="1"
+                    android:background="#00000000"
+                    android:scaleType="fitXY"
+                    android:src="@drawable/ic_save"
+                    />
+                    <!--app:layout_constraintBottom_toBottomOf="parent"-->
+                    <!--app:layout_constraintEnd_toEndOf="parent"-->
+                    <!--app:layout_constraintTop_toBottomOf="@+id/guideline" />-->
 
                 <ImageButton
                     android:id="@+id/face"
@@ -241,15 +253,15 @@
                         android:background="@drawable/round_background"
                         android:scaleType="fitXY"
                         app:srcCompat="@drawable/cat2" />
-                    <ImageButton
-                        android:id="@+id/hat2"
-                        android:layout_width="50dp"
-                        android:layout_height="50dp"
-                        android:layout_margin="4dp"
-                        android:layout_weight="1"
-                        android:background="@drawable/round_background"
-                        android:scaleType="fitXY"
-                        app:srcCompat="@drawable/hat2" />
+                    <!--<ImageButton-->
+                        <!--android:id="@+id/hat2"-->
+                        <!--android:layout_width="50dp"-->
+                        <!--android:layout_height="50dp"-->
+                        <!--android:layout_margin="4dp"-->
+                        <!--android:layout_weight="1"-->
+                        <!--android:background="@drawable/round_background"-->
+                        <!--android:scaleType="fitXY"-->
+                        <!--app:srcCompat="@drawable/hat2" />-->
 
                 </LinearLayout>
             </HorizontalScrollView>

@@ -13,6 +13,10 @@ import android.graphics.BitmapFactory;
 import android.graphics.Camera;
 import android.graphics.Color;
 import android.graphics.Matrix;
+import android.graphics.drawable.BitmapDrawable;
+import android.graphics.drawable.Drawable;
+import android.media.Image;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.provider.MediaStore;
@@ -22,6 +26,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.util.Log;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.google.android.gms.common.ConnectionResult;
@@ -38,11 +43,19 @@ import java.io.ByteArrayOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.net.URI;
 
 import static android.view.View.GONE;
 
 public class FaceFilterActivity extends AppCompatActivity {
     TextGraphic mTextGraphic;
+//    ImageView imgSave;
+//    String ImagePath;
+//    Bitmap bitmap;
+//    Drawable drawable;
+//    Uri URI;
+
+
 
     private final Thread observer = new Thread("observer") {
 
@@ -84,7 +97,7 @@ public class FaceFilterActivity extends AppCompatActivity {
             R.id.mask3,
             R.id.dog,
             R.id.cat2,
-            R.id.hat2
+
     };
 
     private CameraSourcePreview mPreview;
@@ -105,12 +118,29 @@ public class FaceFilterActivity extends AppCompatActivity {
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
         setContentView(R.layout.activity_face_filter);
+//        imgSave = (ImageView)findViewById (R.id.imgSave);
 
         mPreview = (CameraSourcePreview) findViewById(R.id.preview);
         mGraphicOverlay = (GraphicOverlay) findViewById(R.id.faceOverlay);
         //mTextGraphic = new TextGraphic(mGraphicOverlay);
         //mGraphicOverlay.add(mTextGraphic);
 
+//        imgSave.setOnClickListener (new View.OnClickListener () {
+//            @Override
+//            public void onClick(View v) {
+//                drawable = getResources ().getDrawable (R.drawable.image.jpg);
+//                bitmap = ((BitmapDrawable)drawable).getBitmap ();
+//                ImagePath = MediaStore.Images.Media.insertImage (
+//                        getContentResolver (),
+//                        bitmap,
+//                        "demo_image",
+//                        "demo_image"
+//                );
+//                URI = Uri.parse(ImagePath);
+//                Toast.makeText (FaceFilterActivity.this, "Image saved successfully", Toast.LENGTH_LONG).show();
+//
+//            }
+//        });
         ImageButton face = (ImageButton) findViewById(R.id.face);
         face.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
@@ -249,20 +279,54 @@ public class FaceFilterActivity extends AppCompatActivity {
 //            }
 //        });
 
-        ImageButton cameraChange = (ImageButton) findViewById(R.id.change);
+        //        ImageButton cameraChange = (ImageButton) findViewById(R.id.change);
+//        cameraChange.setOnClickListener(new View.OnClickListener() {
+//            public void onClick(View v) {
+//                // Camera Flip Logic
+//                createCameraSource(CameraSource.CAMERA_FACING_BACK);
+//                if (mCameraSource != null) {
+//                    try {
+//                        mPreview.start(mCameraSource, mGraphicOverlay);
+//                    } catch (IOException e) {
+//                        Log.e(TAG, "Unable to start camera source.", e);
+//                        mCameraSource.release();
+//                        mCameraSource = null;
+//                    }
+//                }
+//            }
+//        });
+        final ImageButton cameraChange = (ImageButton) findViewById(R.id.change);
         cameraChange.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 // Camera Flip Logic
-                createCameraSource(CameraSource.CAMERA_FACING_BACK);
-                if (mCameraSource != null) {
-                    try {
-                        mPreview.start(mCameraSource, mGraphicOverlay);
-                    } catch (IOException e) {
-                        Log.e(TAG, "Unable to start camera source.", e);
+                if (mCameraSource.getCameraFacing () == CameraSource.CAMERA_FACING_FRONT) {
+                    //cameraChange.setText ("FRONT CAMERA");
+                    if (mCameraSource != null) {
                         mCameraSource.release();
-                        mCameraSource = null;
+//                        try {
+//                             mPreview.start(mCameraSource, mGraphicOverlay);
+//                        } catch (IOException e) {
+//                             Log.e(TAG, "Unable to start camera source.", e);
+//                            mCameraSource.release();
+//                             mCameraSource = null;
+//                        }
                     }
+                    createCameraSource (CameraSource.CAMERA_FACING_BACK);
+                } else {
+                    //cameraChange.setText ("BACK CAMERA");
+                    if (mCameraSource != null){
+                        mCameraSource.release();
+//                        try {
+//                            mPreview.start(mCameraSource, mGraphicOverlay);
+//                        } catch (IOException e) {
+//                            Log.e(TAG, "Unable to start camera source.", e);
+//                            mCameraSource.release();
+//                            mCameraSource = null;
+//                        }
+                    }
+                    createCameraSource (CameraSource.CAMERA_FACING_BACK);
                 }
+                startCameraSource ();
             }
         });
 
@@ -303,8 +367,8 @@ public class FaceFilterActivity extends AppCompatActivity {
 
     private void takeImage() {
         try{
-            //openCamera(CameraInfo.CAMERA_FACING_BACK);
-            //releaseCameraSource();
+//            openCamera(android.hardware.Camera.CameraInfo.CAMERA_FACING_BACK);
+//            releaseCameraSource();
             //releaseCamera();
             //openCamera(CameraInfo.CAMERA_FACING_BACK);
             //setUpCamera(camera);

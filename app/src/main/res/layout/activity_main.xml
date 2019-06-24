@@ -5,24 +5,70 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+    <!--<include layout="@layout/content_main" />-->
 
-    <android.support.design.widget.AppBarLayout
+    <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+        xmlns:app="http://schemas.android.com/apk/res-auto"
+        xmlns:tools="http://schemas.android.com/tools"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:theme="@style/AppTheme.AppBarOverlay">
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior"
+        tools:context=".MainActivity"
+        tools:showIn="@layout/activity_main"
+        android:orientation="horizontal"
+        android:weightSum="2"
 
-        <android.support.v7.widget.Toolbar
-            android:id="@+id/toolbar"
-            android:layout_width="match_parent"
-            android:layout_height="?attr/actionBarSize"
-            android:background="?attr/colorPrimary"
-            app:popupTheme="@style/AppTheme.PopupOverlay" />
+        android:background="@drawable/background_1">
 
-        <include layout="@layout/layout_toolbar_profile" />
+        <Button
+            android:id="@+id/face_detect"
+            android:layout_width="783px"
+            android:layout_height="136px"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="89dp"
+            android:layout_marginEnd="103dp"
+            android:layout_marginBottom="405dp"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:background="@drawable/shape"
+            android:text="Automatic" />
 
-    </android.support.design.widget.AppBarLayout>
+        <Button
+            android:id="@+id/filter"
+            android:layout_width="783px"
+            android:layout_height="136px"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="81dp"
+            android:layout_marginEnd="104dp"
+            android:layout_marginBottom="21dp"
+            android:layout_weight="1"
+            android:textSize="25sp"
+            android:background="@drawable/shape"
+            android:text="Dynamic" />
+    </RelativeLayout>
+    <!--<android.support.design.widget.AppBarLayout-->
+        <!--android:layout_width="match_parent"-->
+        <!--android:layout_height="wrap_content"-->
+        <!--android:theme="@style/AppTheme.AppBarOverlay">-->
 
-    <include layout="@layout/content_main" />
+        <!--<android.support.v7.widget.Toolbar-->
+            <!--android:id="@+id/toolbar"-->
+            <!--android:layout_width="match_parent"-->
+            <!--android:layout_height="?attr/actionBarSize"-->
+            <!--android:background="?attr/colorPrimary"-->
+            <!--app:popupTheme="@style/AppTheme.PopupOverlay" />-->
+
+
+        <!--&lt;!&ndash;<include layout="@layout/layout_toolbar_profile" />&ndash;&gt;-->
+        <!---->
+
+    <!--</android.support.design.widget.AppBarLayout>-->
+
+
 
     <!--<ImageButton-->
         <!--android:id="@+id/filter"-->
