@@ -80,7 +80,8 @@ public class StickerBSFragment extends BottomSheetDialogFragment {
 
     public class StickerAdapter extends RecyclerView.Adapter<StickerAdapter.ViewHolder> {
 
-        int[] stickerList = new int[]{R.drawable.aa, R.drawable.bb, R.drawable.cc, R.drawable.dd, R.drawable.ee};
+        int[] stickerList = new int[]{R.drawable.aa, R.drawable.bb, R.drawable.cc, R.drawable.head_mask, R.drawable.dhaka_topi ,R.drawable.sano_tika,R.drawable.tika, R.drawable.beard_2, R.drawable.bulaki_2,  R.drawable.bulaki,R.drawable.dd, R.drawable.ee, R.drawable.glasses2, R.drawable.glasses5, R.drawable.hair
+        };
 
         @Override
         public ViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -123,7 +124,7 @@ public class StickerBSFragment extends BottomSheetDialogFragment {
     private String convertEmoji(String emoji) {
         String returnedEmoji = "";
         try {
-            int convertEmojiToInt = Integer.parseInt(emoji.substring(2), 10);
+            int convertEmojiToInt = Integer.parseInt(emoji.substring(2), 0);
             returnedEmoji = getEmojiByUnicode(convertEmojiToInt);
         } catch (NumberFormatException e) {
             returnedEmoji = "";

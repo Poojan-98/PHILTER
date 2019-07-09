@@ -131,8 +131,8 @@ class FaceGraphic extends GraphicOverlay.Graphic {
         */
         float xOffset = scaleX(face.getWidth() / 2.0f);
         float yOffset = scaleY(face.getHeight() / 2.0f);
-        float left = x - xOffset;
-        float top = y - yOffset;
+        float left = x - xOffset + 3;
+        float top = y - yOffset - 130;
         //float right = x + xOffset;
         //float bottom = y + yOffset;
         //canvas.drawRect(left, top, right, bottom, mBoxPaint);

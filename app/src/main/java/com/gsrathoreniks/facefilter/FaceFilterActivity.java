@@ -117,6 +117,8 @@ public class FaceFilterActivity extends AppCompatActivity {
     @Override
     public void onCreate(Bundle icicle) {
         super.onCreate(icicle);
+        ActivityCompat.requestPermissions(this,
+                new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE},1);
         setContentView(R.layout.activity_face_filter);
 //        imgSave = (ImageView)findViewById (R.id.imgSave);
 
@@ -324,7 +326,7 @@ public class FaceFilterActivity extends AppCompatActivity {
 //                            mCameraSource = null;
 //                        }
                     }
-                    createCameraSource (CameraSource.CAMERA_FACING_BACK);
+                    createCameraSource (CameraSource.CAMERA_FACING_FRONT);
                 }
                 startCameraSource ();
             }
@@ -349,9 +351,9 @@ public class FaceFilterActivity extends AppCompatActivity {
         camera.setOnClickListener(new View.OnClickListener() {
             public void onClick(View v) {
                 takeImage();
-                onPause();
-            }
-        });
+               onPause();
+           }
+       });
 
 
 
@@ -367,8 +369,8 @@ public class FaceFilterActivity extends AppCompatActivity {
 
     private void takeImage() {
         try{
-//            openCamera(android.hardware.Camera.CameraInfo.CAMERA_FACING_BACK);
-//            releaseCameraSource();
+            //openCamera(CameraInfo.CAMERA_FACING_BACK);
+            //releaseCameraSource();
             //releaseCamera();
             //openCamera(CameraInfo.CAMERA_FACING_BACK);
             //setUpCamera(camera);
@@ -384,6 +386,7 @@ public class FaceFilterActivity extends AppCompatActivity {
                         Bitmap rotatedBitmap = null;
                         loadedImage = BitmapFactory.decodeByteArray(bytes, 0,
                                 bytes.length);
+                        Log.w("loadedimage", "" + loadedImage);
 
                         // rotate Image
                         Matrix rotateMatrix = new Matrix();
@@ -395,16 +398,18 @@ public class FaceFilterActivity extends AppCompatActivity {
                         File folder = null;
                         if (state.contains(Environment.MEDIA_MOUNTED)) {
                             folder = new File(Environment
-                                    .getExternalStorageDirectory()+"/faceFilter");
+                                    .getExternalStorageDirectory() + "/faceFilter");
                         } else {
                             folder = new File(Environment
                                     .getExternalStorageDirectory() + "/faceFilter");
                         }
 
+                        Log.w("folder", "" + folder.exists());
                         boolean success = true;
                         if (!folder.exists()) {
                             success = folder.mkdirs();
                         }
+                        Log.w("success", "" + success);
                         if (success) {
                             java.util.Date date = new java.util.Date();
                             imageFile = new File(folder.getAbsolutePath()
@@ -564,6 +569,8 @@ public class FaceFilterActivity extends AppCompatActivity {
     protected void onPause() {
         super.onPause();
         mPreview.stop();
+
+
     }
 
     /**
